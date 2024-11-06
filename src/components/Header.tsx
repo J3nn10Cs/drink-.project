@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { NavLink, useLocation } from "react-router-dom"
+import { useAppStore } from "../stores/useAppStore";
 
 export default function Header() {
 
@@ -7,6 +8,12 @@ export default function Header() {
   const {pathname} = useLocation();
 
   const isHome = useMemo(() => pathname === '/' ,[pathname])
+
+  const fetchCategories = useAppStore((state) => state.fetchCategories)
+
+  useEffect(() => {
+    fetchCategories()
+  },[])
   return (
     <>
       <header className="bg-sky-900">
@@ -44,13 +51,20 @@ export default function Header() {
               </NavLink>
             </nav>
           </div>
+        </div>
+      </header> 
 
-          {isHome && (
-            <form action="">
-              <div>
+      {isHome && (
+            <form 
+              action=""
+              className="max-w-3xl mx-auto bg-orange-400 p-3 space-y-3 mt-4 rounded-2xl"
+            >
+              <div 
+                className="m-3"
+              >
                 <label 
                   htmlFor="ingredient"
-                  className="block text-white mt-2 font-bold text-2xl"
+                  className="block text-black mt-2 font-bold text-xl"
                 >
                   Name Ingredient
                 </label>
@@ -63,11 +77,27 @@ export default function Header() {
                   placeholder="Name o ingredient. Ej, Vodka, Tekila, Cafe"
                 />
               </div>
+              <div 
+                className="m-3"
+              >
+                <label 
+                  htmlFor="ingredient"
+                  className="block text-black mt-2 font-bold text-xl"
+                >
+                  Category
+                </label>
+
+                <select
+                  name="category" 
+                  id="category"
+                  className="w-full bg-white p-3 mt-3 rounded-xl text-gray-700"
+                >
+                  <option value="">--Selecciona--</option>
+                  
+                </select>
+              </div>
             </form>
           )}
-
-        </div>
-      </header> 
     </>
   )
 }
