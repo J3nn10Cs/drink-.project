@@ -1,4 +1,11 @@
 import { InferOutput } from "valibot";
-import { DrinkSchema } from "../utils/drink-schema";
+import { DrinkSchema, filterSearchSchema, filterSearchSchemaObject, SearchSchema } from "../utils/drink-schema";
 
-export type DrinkResponseSchema = InferOutput<typeof DrinkSchema> 
+//type de categorias
+export type Categories = InferOutput<typeof DrinkSchema> 
+
+export type SearchFilter = InferOutput<typeof SearchSchema>
+
+export type Filter = InferOutput<typeof filterSearchSchema>
+
+export type Drink = InferOutput<typeof filterSearchSchemaObject>
