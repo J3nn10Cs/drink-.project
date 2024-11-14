@@ -24,7 +24,7 @@ export const filterSearchSchema = object({
 }) 
 
 export const RecipeAPIResponseSchema = object({
-  idDrink: string(),
+  idDrink: string(),  
   strDrink: string(),
   strDrinkThumb: string(),
   strInstructions: string(),

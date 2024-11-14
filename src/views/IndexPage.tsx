@@ -29,7 +29,9 @@ export default function IndexPage() {
       ) : 
       (
         <>
-          <h1>No hay </h1>
+          <h1
+            className="text-center font-black text-3xl"
+          >Aún no haz buscado recetas </h1>
         </>
       )}    
     </>

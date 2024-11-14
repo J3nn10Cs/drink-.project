@@ -11,6 +11,7 @@ export default function DrinkCard({drink} : DrinkProps ) {
 
   return (
     <>
+
     <div
       className="p-4 bg-slate-200 rounded-2xl"
     >
